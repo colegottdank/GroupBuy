@@ -17,9 +17,13 @@ WORKDIR "/src/GroupBuy"
 RUN dotnet build "GroupBuy.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "GroupBuy.csproj" -c Release -o /app/publish
+RUN dotnet publish "GroupBuy.csproj" -c Release -o /app/publishC:\Users\coleg\source\repos\GroupBuy\GroupBuy\Startup.cs
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "GroupBuy.dll"]
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+RUN dotnet tool install -g dotnet-ef --version 3.1.1
+RUN export PATH="$PATH:/root/.dotnet/tools"
