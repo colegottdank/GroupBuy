@@ -17,8 +17,8 @@ namespace GroupBuy.Controllers
 	public class AuthController : Controller
 	{
 		private Guid Nonce;
-		private const string apiKey = "30660d0d1b71d565f9098e516640973f";
-		private const string ClientSecret = "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";
+		private const string apiKey = "";
+		private const string ClientSecret = "";
 		private const string Url = "https://423f85de3420.ngrok.io";
 
 		public IActionResult Install(string shop)
